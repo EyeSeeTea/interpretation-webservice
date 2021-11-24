@@ -1,98 +1,40 @@
+/** @format */
+
 module.exports = {
-  extends: [
-    'airbnb-typescript/base',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:typescript-sort-keys/recommended',
-    'prettier'
-  ],
-  parser       : '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      modules: true
+    extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+    parser: "@typescript-eslint/parser",
+    rules: {
+        "no-console": ["warn", { allow: ["debug", "warn", "error"] }],
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/explicit-function-return-type": ["off"],
+        "@typescript-eslint/no-this-alias": ["off"],
+        "unused-imports/no-unused-imports": "warn",
+        "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+        "@typescript-eslint/no-unused-expressions": ["warn"],
+        "no-unused-expressions": "off",
+        "no-useless-concat": "off",
+        "no-useless-constructor": "off",
+        "no-unexpected-multiline": "off",
+        "default-case": "off",
+        "array-callback-return": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/member-delimiter-style": "off",
+        "@typescript-eslint/type-annotation-spacing": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "no-use-before-define": "off",
+        "no-debugger": "warn",
+        "no-extra-semi": "off",
+        "no-mixed-spaces-and-tabs": "off",
     },
-    ecmaVersion: 6,
-    project    : './tsconfig.json',
-    sourceType : 'module'
-  },
-  plugins: ['@typescript-eslint', 'typescript-sort-keys', 'sort-keys-fix'],
-  rules  : {
-    '@typescript-eslint/camelcase'                  : 'off',
-    '@typescript-eslint/lines-between-class-members': 'off',
-    '@typescript-eslint/naming-convention'          : [
-      'error',
-      {
-        selector: 'variable',
-        format  : ['camelCase', 'PascalCase', 'UPPER_CASE']
-      },
-      {
-        selector         : 'parameter',
-        format           : ['camelCase'],
-        leadingUnderscore: 'allow'
-      },
-      {
-        selector         : 'memberLike',
-        modifiers        : ['private'],
-        format           : ['camelCase'],
-        leadingUnderscore: 'require'
-      },
-      {
-        selector: 'typeLike',
-        format  : ['PascalCase']
-      }
-    ],
-    '@typescript-eslint/semi'          : ['error', 'never'],
-    'arrow-parens'                     : ['error', 'as-needed'],
-    'comma-dangle'                     : ['error', 'never'],
-    curly                              : ['error', 'multi'],
-    'eol-last'                         : ['error', 'always'],
-    'import/no-extraneous-dependencies': [
-      'error', 
-      {
-        'devDependencies': true
-      }
-    ],
-    'import/prefer-default-export': 'off',
-    'key-spacing'                 : [2, { align: 'colon' }],
-    'keyword-spacing'             : ['error', { after: true, before: true }],
-    'max-len': [
-      'error',
-      {
-        code                  : 80,
-        ignoreComments        : true,
-        ignoreRegExpLiterals  : true,
-        ignoreTemplateLiterals: true,
-        ignoreTrailingComments: true,
-        ignoreStrings         : true,
-        ignoreUrls            : true
-      }
-    ],
-    'newline-before-return'      : 'error',
-    'no-extra-parens'            : 'error',
-    'no-console'                 : 'off',
-    'no-param-reassign'          : 'off',
-    'no-plusplus'                : 'off',
-    'no-trailing-spaces'         : 'error',
-    'no-underscore-dangle'       : [
-      'error',
-      {
-        'allowAfterThis'      : true,
-        'enforceInMethodNames': false 
-      }
-    ],
-    'object-curly-spacing'       : ['error', 'always'],
-    'prefer-const'               : 'error',
-    radix                        : ['error', 'as-needed'],
-    semi                         : [2, 'never'],
-    'sort-keys'                  : 'error',
-    'sort-keys-fix/sort-keys-fix': 'warn',
-    'space-before-function-paren': [
-      'error',
-      {
-        anonymous : 'always',
-        named     : 'never',
-        asyncArrow: 'always'
-      }
-    ]
-  }
-}
+    plugins: ["@typescript-eslint", "unused-imports"],
+    settings: {},
+};

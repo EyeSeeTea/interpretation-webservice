@@ -1,1 +1,3 @@
-console.log("Hello!");
+import { runServer } from "./webservice/server";
+
+runServer();
