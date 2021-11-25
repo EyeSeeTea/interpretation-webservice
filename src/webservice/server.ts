@@ -14,6 +14,13 @@ export function runAccessWebserver(config: Config): void {
     const app = express();
     app.use(cors());
 
+    app.get("/access/interpretation/:interpretationId/users/:usernames", (req, res) => {
+        const { params } = req;
+        const usernames = params.usernames.split(",");
+        const options = { interpretationId: params.interpretationId, usernames };
+        return run(res, compositionRoot.getInterpretationAccess.execute(options));
+    });
+
     app.get("/access/:objectId/users/:usernames", (req, res) => {
         const { params } = req;
         const usernames = params.usernames.split(",");

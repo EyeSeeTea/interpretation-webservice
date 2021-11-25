@@ -1,6 +1,6 @@
 import { FutureData } from "../../data/future";
 import _ from "lodash";
-import { Access, ObjectId } from "../entities/Access";
+import { ObjectAccess, ObjectId } from "../entities/ObjectAccess";
 import { CommentId, InterpretationId } from "../entities/Interpretation";
 import { AccessRepository } from "../repositories/AccessRepository";
 import { InterpretationRepository } from "../repositories/InterpretationRepository";
@@ -15,7 +15,7 @@ export class GetObjectCommentAccessUseCase {
         objectId: ObjectId;
         interpretationId: InterpretationId;
         commentId: CommentId;
-    }): FutureData<Access> {
+    }): FutureData<ObjectAccess> {
         const interpretation$ = this.interpretationRepository.get(options.interpretationId);
         return interpretation$.flatMap(interpretation => {
             const usernames = _(interpretation.comments)

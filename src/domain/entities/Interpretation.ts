@@ -1,5 +1,6 @@
 export interface Interpretation {
     id: InterpretationId;
+    relatedObject: { id: string };
     comments: Array<{
         id: CommentId;
         mentions: Array<{ username: string }>;

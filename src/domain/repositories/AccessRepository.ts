@@ -1,6 +1,6 @@
 import { FutureData } from "../../data/future";
-import { Access, ObjectId, Username } from "../entities/Access";
+import { ObjectAccess, ObjectId, Username } from "../entities/ObjectAccess";
 
 export interface AccessRepository {
-    get(options: { objectId: ObjectId; usernames: Username[] }): FutureData<Access>;
+    get(options: { objectId: ObjectId; usernames: Username[] }): FutureData<ObjectAccess>;
 }

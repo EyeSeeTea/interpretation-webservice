@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { AccessRepository } from "../domain/repositories/AccessRepository";
-import { Access, ObjectId, Username } from "../domain/entities/Access";
+import { ObjectAccess, ObjectId, Username } from "../domain/entities/ObjectAccess";
 import { FutureData, toFuture } from "./future";
 import { Future } from "../utils/future";
 import { D2Api } from "./d2-api";
@@ -8,7 +8,7 @@ import { D2Api } from "./d2-api";
 export class AccessDhis2Repository implements AccessRepository {
     constructor(private api: D2Api) {}
 
-    get(options: { objectId: ObjectId; usernames: Username[] }): FutureData<Access> {
+    get(options: { objectId: ObjectId; usernames: Username[] }): FutureData<ObjectAccess> {
         const resR = this.api.metadata.get({
             visualizations: {
                 fields: {
@@ -55,7 +55,7 @@ export class AccessDhis2Repository implements AccessRepository {
                 })
                 .value();
 
-            const access: Access = {
+            const access: ObjectAccess = {
                 object: { id: visualization.id, name: visualization.name },
                 userAccesses,
             };

@@ -13,6 +13,7 @@ export class InterpretationDhis2Repository implements InterpretationRepository {
             interpretations: {
                 fields: {
                     id: true,
+                    visualization: { id: true },
                     comments: { id: true, mentions: { username: true } },
                 },
                 filter: { id: { eq: id } },
@@ -21,15 +22,20 @@ export class InterpretationDhis2Repository implements InterpretationRepository {
 
         return toFuture(res$).flatMap(res => {
             const d2Interpretation = res.interpretations[0] as Maybe<D2Interpretation>;
-            return d2Interpretation
-                ? Future.success(d2Interpretation)
-                : Future.error(`Cannot find interpretation ${id}`);
+            if (!d2Interpretation) return Future.error(`Cannot find interpretation ${id}`);
+            const interpretation: Interpretation = {
+                ...d2Interpretation,
+                relatedObject: { id: d2Interpretation.visualization.id },
+            };
+
+            return Future.success(interpretation);
         });
     }
 }
 
 interface D2Interpretation {
     id: string;
+    visualization: { id: string };
     comments: Array<{
         id: string;
         mentions: Array<{ username: string }>;
